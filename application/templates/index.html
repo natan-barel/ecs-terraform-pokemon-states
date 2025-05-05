@@ -47,6 +47,15 @@
         button:hover {
             background-color: #45a049; /* Darker green on hover */
         }
+
+        /* Style for server info */
+        .server-info {
+            margin-top: 20px;
+            padding: 10px;
+            background-color: #f8f9fa;
+            border-radius: 5px;
+            font-size: 14px;
+        }
     </style>
 </head>
 <body>
@@ -59,6 +68,10 @@
             <img src="{{ pokemon['image_url'] }}" alt="{{ pokemon['name'] }}" />
         </div>
         <button id="get-pokemon">Get Random Pokémon</button>
+        <div class="server-info">
+            <p>Server IP: {{ server_info['ip'] }}</p>
+            <p>Availability Zone: {{ server_info['az'] }}</p>
+        </div>
     </div>
 
     <script>
@@ -78,46 +91,4 @@
         });
     </script>
 </body>
-<!--<body>-->
-<!--    <div class="content">-->
-<!--        <h1>Random Pokémon</h1>-->
-<!--        {% if pokemon %} &lt;!&ndash; Check if a Pokémon exists &ndash;&gt;-->
-<!--            <h2>Name: {{ pokemon['name'] }}</h2> &lt;!&ndash; Display Pokémon name &ndash;&gt;-->
-<!--            <h3>ID: {{ pokemon['id'] }}</h3> &lt;!&ndash; Display Pokémon ID &ndash;&gt;-->
-<!--            <h3>Abilities: {{ pokemon['abilities'] | join(', ') }}</h3> &lt;!&ndash; Display Pokémon abilities &ndash;&gt;-->
-<!--            <img src="{{ pokemon['image_url'] }}" alt="{{ pokemon['name'] }}" /> &lt;!&ndash; Display Pokémon image &ndash;&gt;-->
-<!--        {% else %} &lt;!&ndash; If no Pokémon is found &ndash;&gt;-->
-<!--            <p>No Pokémon found!</p> &lt;!&ndash; Display message &ndash;&gt;-->
-<!--        {% endif %}-->
-<!--        <form method="get" action="/"> &lt;!&ndash; Form to get a new random Pokémon &ndash;&gt;-->
-<!--            <button type="submit">Get Random Pokémon</button> &lt;!&ndash; Submit button &ndash;&gt;-->
-<!--        </form>-->
-<!--    </div>-->
-<!--</body>-->
 </html>
-
-
-
-
-<!--<!DOCTYPE html>-->
-<!--<html lang="en">-->
-<!--<head>-->
-<!--    <meta charset="UTF-8">-->
-<!--    <meta name="viewport" content="width=device-width, initial-scale=1.0">-->
-<!--    <title>Random Pokémon</title>-->
-<!--</head>-->
-<!--<body>-->
-<!--    <h1>Random Pokémon</h1>-->
-<!--    {% if pokemon %}-->
-<!--        <h2>Name: {{ pokemon['name'] }}</h2>-->
-<!--        <h3>ID: {{ pokemon['id'] }}</h3>-->
-<!--        <h3>Abilities: {{ pokemon['abilities'] | join(', ') }}</h3>-->
-<!--        <img src="{{ pokemon['image_url'] }}" alt="{{ pokemon['name'] }}" />-->
-<!--    {% else %}-->
-<!--        <p>No Pokémon found!</p>-->
-<!--    {% endif %}-->
-<!--    <form method="get" action="/">-->
-<!--        <button type="submit">Get Random Pokémon</button>-->
-<!--    </form>-->
-<!--</body>-->
-<!--</html>-->
