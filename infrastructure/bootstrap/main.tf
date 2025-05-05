@@ -2,8 +2,10 @@ provider "aws" {
   region = "us-east-1"
 }
 
+data "aws_caller_identity" "current" {}
+
 resource "aws_s3_bucket" "tf_state" {
-  bucket = "my-terraform-states-unique"
+  bucket = "my-terraform-states-unique-${data.aws_caller_identity.current.account_id}"
 
   lifecycle {
     prevent_destroy = true
