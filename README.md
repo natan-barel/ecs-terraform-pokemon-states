@@ -101,25 +101,30 @@ terraform apply
 
 The application will be accessible via the ALB DNS name output by Terraform. ECS Auto Scaling will automatically adjust the task count based on CPU usage and ALB request count.
 
-This setup includes a CI/CD pipeline with GitHub Actions, which will trigger deployments when changes are pushed to the main branch. Additionally, the infrastructure is divided into separate modules (bootstrap, network, and ecs-fargate) for better organization and isolation of state files.
+This setup includes a CI/CD pipeline with GitHub Actions, triggering deployments when changes are pushed to the main branch. Additionally, the infrastructure is divided into separate modules (bootstrap, network, and ecs-fargate) for better organization and isolation of state files.
 
 ---
 
 ## 📸 Screenshot of the Architecture
 
-Here's a diagram of the project's architecture, showcasing the key components and how they interact. While the diagram illustrates the use of **AWS CodePipeline**, **AWS CodeDeploy** and **AWS CodeBuild** for CI/CD, in this project, **GitHub Actions** is used to manage the continuous integration and deployment process.
+Here's a diagram of the project's architecture, showcasing the key components and how they interact. While the diagram illustrates the use of **AWS CodePipeline**, **AWS CodeDeploy**, and **AWS CodeBuild** for CI/CD, in this project, **GitHub Actions** is used to manage the continuous integration and deployment process.
 
-![Architecture Diagram](https://github.com/natan-barel/ecs-terraform-pokemon-states/blob/aea20ae93de8aa5a00cf5924aa8745f5bf0f67ff/_Pokemon-app-terraform_.drawio.png)
+![Architecture Diagram](https://github.com/natan-barel/ecs-terraform-pokemon-states/blob/main/Pokemon-app-terraform.png?raw=true)
 
 ## Detailed ECS & ALB Architecture
 The following diagrams illustrate how the system components interact — from internet traffic through Route 53, ALB, and into ECS Fargate tasks:
 
 ### Full AWS ECS Fargate Infrastructure
-<p align="center"> <img src="https://github.com/natan-barel/ecs-terraform-pokemon-states/blob/5f64e9fb3ed95c17cd312a12457b2965f274dba5/AWS_ECS_Fargate_Architecture.png?raw=true" alt="AWS ECS Fargate Full Architecture" width="800"/> </p>
+<p align="center">
+  <img src="https://github.com/natan-barel/ecs-terraform-pokemon-states/blob/main/AWS_ECS_Fargate_Architecture.png?raw=true" alt="AWS ECS Fargate Full Architecture" width="800"/>
+</p>
+
 This broader diagram captures the full infrastructure, including VPC, subnets, ALB, ECS Service, Fargate Tasks, NAT Gateway, and Internet Gateway, reflecting the real AWS environment provisioned by Terraform.
 
 ### ALB and ECS Flow
-<p align="center"> <img src="https://github.com/natan-barel/ecs-terraform-pokemon-states/blob/5f64e9fb3ed95c17cd312a12457b2965f274dba5/ALB_ECS_Architecture.png?raw=true" alt="ALB to ECS Architecture" width="700"/> </p>
+<p align="center">
+  <img src="https://github.com/natan-barel/ecs-terraform-pokemon-states/blob/main/AWS_Fargate_Architecture.png?raw=true" alt="AWS Fargate Architecture" width="700"/>
+</p>
 This diagram shows how the Application Load Balancer receives traffic from Route 53, uses a listener on port 80/443, and routes requests to a target group with IP-based Fargate tasks in private subnets.
 
 ---
