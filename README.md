@@ -208,7 +208,7 @@ Using **S3** to store the Terraform state file allows for versioning and persist
 
 Below you can find a screenshot of the actual S3 bucket structure used for Terraform state files:
 
-![S3 Bucket Structure](https://github.com/natan-barel/ecs-terraform-pokemon-states/blob/650c31d85d6f80b38c28b6af957ee32695e67fdd/IMG_2020.png)
+![S3 Bucket Structure](https://github.com/natan-barel/ecs-terraform-pokemon-states/blob/main/my-terraform-states-unique-833778718960.png?raw=true)
 
 ---
 
