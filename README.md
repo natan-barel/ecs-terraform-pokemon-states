@@ -62,7 +62,7 @@ Update each terraform.tfvars file with your AWS, VPC, and application-specific s
 If you want to build the Docker image locally, run the following commands:
 ```bash
 cd application
-docker build -t pokemon-flask-app .
+docker build -t pokemon-flask-app.
 ```
 
 ### 4. Push the Image to ECR or Docker Hub
@@ -91,7 +91,7 @@ terraform apply
 ```
 #### Stage 3: ECS-Fargate
 
-Finally, deploy the application on ECS Fargate. Run the following commands:
+Finally, the application will be deployed on ECS Fargate. Run the following commands:
 ```bash
 cd infrastructure/ecs-fargate
 terraform init
@@ -101,7 +101,7 @@ terraform apply
 
 The application will be accessible via the ALB DNS name output by Terraform. ECS Auto Scaling will automatically adjust the task count based on CPU usage and ALB request count.
 
-This setup includes a CI/CD pipeline with GitHub Actions, which will trigger deployments when changes are pushed to the main branch. Additionally, the infrastructure is divided into separate modules (bootstrap, network, ecs-fargate) for better organization and isolation of state files.
+This setup includes a CI/CD pipeline with GitHub Actions, which will trigger deployments when changes are pushed to the main branch. Additionally, the infrastructure is divided into separate modules (bootstrap, network, and ecs-fargate) for better organization and isolation of state files.
 
 ---
 
@@ -116,7 +116,7 @@ The following diagrams illustrate how the system components interact — from in
 
 ### Full AWS ECS Fargate Infrastructure
 <p align="center"> <img src="https://github.com/natan-barel/ecs-terraform-pokemon-states/blob/5f64e9fb3ed95c17cd312a12457b2965f274dba5/AWS_ECS_Fargate_Architecture.png?raw=true" alt="AWS ECS Fargate Full Architecture" width="800"/> </p>
-This broader diagram captures the full infrastructure including VPC, subnets, ALB, ECS Service, Fargate Tasks, NAT Gateway, and Internet Gateway, reflecting the real AWS environment provisioned by Terraform.
+This broader diagram captures the full infrastructure, including VPC, subnets, ALB, ECS Service, Fargate Tasks, NAT Gateway, and Internet Gateway, reflecting the real AWS environment provisioned by Terraform.
 
 ### ALB and ECS Flow
 <p align="center"> <img src="https://github.com/natan-barel/ecs-terraform-pokemon-states/blob/5f64e9fb3ed95c17cd312a12457b2965f274dba5/ALB_ECS_Architecture.png?raw=true" alt="ALB to ECS Architecture" width="700"/> </p>
@@ -167,11 +167,11 @@ Here's a visual overview of the workflow:
 
 ## Deployment Process Overview
 
-1. Checkout repository
+1. Check out the repository
 2. Authenticate with AWS and ECR
 3. Build Docker image from `application/`
 4. Push image to ECR with `latest` tag
-5. Update ECS service to trigger new deployment
+5. Update the ECS service to trigger a new deployment
 6. Send deployment status to Slack
 
 ---
@@ -221,7 +221,7 @@ This project follows an opinionated **modular structure** with separate Terrafor
 - **network**:  
   This stage provisions the base networking layer.
   - **State file path**: `states/network/terraform.tfstate`
-  - **Description**: Provisions the base networking layer: VPC, subnets, NAT, IGW, and route tables.
+  - **Description**: Provision the base networking layer: VPC, subnets, NAT, IGW, and route tables.
 
 - **ecs-fargate**:  
   This stage deploys the application on ECS Fargate.
